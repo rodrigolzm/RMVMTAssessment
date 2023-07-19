@@ -1,0 +1,41 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to RMVMT Assessment</h1>
+    <p>This is a sample app to provide a functionality to add suspension for a driver licence.</p>
+</div>
+
+<div>
+    <p>There are three pre-populated driver licences: two active and one expired.</p>
+    <ul>
+        <li><strong>Driver Licences</strong> provides a list of all available driver licences and their suspensions.</li>
+        <li><strong>Add Suspension</strong> exposes a form to add a suspension to a driver licence.</li>
+    </ul>
+    <p>This assessment has the following business rules:</p>
+    <ul>
+        <li>Add suspension for an active driver licence making it suspended.</li>
+        <li>Not accept a suspension for an expired driver licence.</li>
+        <li>Suspension period must have a valid start and end range.</li>
+        <li>Driver licence under a suspended period is considered suspended.</li>
+        <li>Driver licence is not considered suspended if it is not under any suspension period.</li>
+        <li>Suspension is archived after 5 years.</li>
+    </ul>
+    <form method="post">
+        @{
+            if (@TempData["Message"] != null)
+            {
+                <div>
+                    <span class="text-success">@TempData["Message"]</span>
+                </div>
+            }
+        }
+        <p>
+            <span>To reset the database to its initial state, please</span>
+            <input type="submit" value="click here" class="btn btn-link p-0 b-0" />
+        </p>
+    </form>
+</div>

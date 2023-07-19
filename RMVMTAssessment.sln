@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RMVMTAssessment", "RMVMTAssessment\RMVMTAssessment.csproj", "{9176AD01-A7F8-40E3-A4C9-2E90CF1263BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RMVMTAssessment.Tests", "RMVMTAssessment.Tests\RMVMTAssessment.Tests.csproj", "{2FE80A43-9608-4CAF-8233-0232D24BB2D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9176AD01-A7F8-40E3-A4C9-2E90CF1263BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9176AD01-A7F8-40E3-A4C9-2E90CF1263BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9176AD01-A7F8-40E3-A4C9-2E90CF1263BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9176AD01-A7F8-40E3-A4C9-2E90CF1263BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FE80A43-9608-4CAF-8233-0232D24BB2D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FE80A43-9608-4CAF-8233-0232D24BB2D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FE80A43-9608-4CAF-8233-0232D24BB2D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FE80A43-9608-4CAF-8233-0232D24BB2D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1693D7C0-28FF-4FE5-9753-A780F26DFBFB}
+	EndGlobalSection
+EndGlobal

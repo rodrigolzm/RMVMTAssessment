@@ -1,0 +1,131 @@
+﻿@page
+@model RMVMTAssessment.Pages.DriverLicenses.IndexModel
+
+@{
+    ViewData["Title"] = "Driver Licences";
+}
+
+@section scripts{
+    <script>
+        function openModal(number) {
+            $('#modal-suspension-' + number).modal('show');
+        }
+        function closeModal(number) {
+            $('#modal-suspension-' + number).modal('hide');
+        }
+    </script>
+}
+
+<h1>Driver Licences</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverLicences[0].Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverLicences[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverLicences[0].IssueAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverLicences[0].ExpireAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverLicences[0].IsExpired)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverLicences[0].IsSuspended)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var driverLicence in Model.DriverLicences)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => driverLicence.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => driverLicence.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => driverLicence.IssueAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => driverLicence.ExpireAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => driverLicence.IsExpired)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => driverLicence.IsSuspended)
+                </td>
+                <td>
+                    @if (driverLicence.Suspensions != null && driverLicence.Suspensions.Count > 0)
+                    {
+                        <button type="button" class="btn btn-secondary" onclick="openModal(@Html.DisplayFor(modelItem => driverLicence.Number))">Suspensions</button>
+                        <div class="modal fade" id="modal-suspension-@Html.DisplayFor(modelItem => driverLicence.Number)" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Suspensions for @Html.DisplayFor(modelItem => driverLicence.Number)</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        @Html.DisplayNameFor(modalItem => driverLicence.Suspensions[0].StartDate)
+                                                    </th>
+                                                    <th>
+                                                        @Html.DisplayNameFor(modalItem => driverLicence.Suspensions[0].EndDate)
+                                                    </th>
+                                                    <th>
+                                                        @Html.DisplayNameFor(modalItem => driverLicence.Suspensions[0].IsExpired)
+                                                    </th>
+                                                    <th>
+                                                        @Html.DisplayNameFor(modalItem => driverLicence.Suspensions[0].IsArchived)
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var suspension in driverLicence.Suspensions)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => suspension.StartDate)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => suspension.EndDate)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => suspension.IsExpired)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => suspension.IsArchived)
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" onclick="closeModal(@Html.DisplayFor(modelItem => driverLicence.Number))">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-page="/Index" class="ns-back-link pr-2">Back to Home</a>
+</div>

@@ -1,0 +1,63 @@
+﻿@page
+@model RMVMTAssessment.Pages.SuspensionTransactions.CreateModel
+
+@{
+    ViewData["Title"] = "Add Suspension";
+}
+
+<h1>Add Suspension</h1>
+
+@{
+    if (@TempData["Message"] != null)
+    {
+        <div>
+            <span class="text-success">@TempData["Message"]</span>
+        </div>
+    }
+}
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group pb-2">
+                <label asp-for="SuspensionTransactionForm.DriverLicenceNumber" class="control-label"></label>
+                <input asp-for="SuspensionTransactionForm.DriverLicenceNumber" class="form-control" />
+                <span asp-validation-for="SuspensionTransactionForm.DriverLicenceNumber" class="text-danger"></span>
+                <span class="text-danger">@Html.ValidationMessage("DriverLicenceNotFound")</span>
+                <span class="text-danger">@Html.ValidationMessage("ExpiredDriverLicence")</span>
+            </div>
+
+            <div class="form-group pb-2">
+                <label asp-for="SuspensionTransactionForm.StartDate" class="control-label"></label>
+                <input asp-for="SuspensionTransactionForm.StartDate" class="form-control" />
+                <span asp-validation-for="SuspensionTransactionForm.StartDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group pb-2">
+                <label asp-for="SuspensionTransactionForm.EndDate" class="control-label"></label>
+                <input asp-for="SuspensionTransactionForm.EndDate" class="form-control" />
+                <span asp-validation-for="SuspensionTransactionForm.EndDate" class="text-danger"></span>
+                <span class="text-danger">@Html.ValidationMessage("InvalidPeriod")</span>
+            </div>
+
+            <div class="form-group pb-2">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="/Index" class="ns-back-link pr-2">Back to Home</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $('.btn-primary').click(function () {
+            $('.field-validation-error').empty().removeClass('field-validation-error').addClass('field-validation-valid');
+        });
+    </script>
+}
